@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
-import { View, Text, SafeAreaView, Image, Linking, Button } from 'react-native'
+import { View, SafeAreaView, Image, Linking, ScrollView } from 'react-native'
 import { globalStyles } from '../styles/globalStyles';
-
+import { Button, Title, Text } from 'react-native-paper'
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class Anchor extends React.Component {
     _handlePress = () => {
@@ -12,7 +13,10 @@ class Anchor extends React.Component {
 
     render() {
         return (
-            <Button title={this.props.title} onPress={this._handlePress} />
+            <Button style={{ width: 200, margin: 10 }} mode="contained" onPress={this._handlePress} color={this.props.color}>
+                <Icon name={this.props.icon} size={this.props.size} /> <Text> {this.props.title}</Text>
+            </Button>
+
         );
     }
 }
@@ -20,25 +24,38 @@ class Anchor extends React.Component {
 export default function AboutUs() {
     return (
         <SafeAreaView style={{ backgroundColor: '#fff', flex: 1 }}>
-            <View >
+            <ScrollView>
                 <Image source={require('../assets/wesleyOne_logo.jpg')}
                     style={globalStyles.aboutUsLogo} />
                 <Text style={globalStyles.aboutUsHeader}>"Sharing the United Methodist Connexion Through Internet Radio"</Text>
-                <Text style={globalStyles.aboutUsHeader}>What Is WesleyOne.faith all about ?{"\n"}{"\n"}</Text>
-                <Text style={{ fontWeight: '400', textAlign: 'justify', fontSize: 16 }}> WesleyOne Internet Radio is a live Broadcast Ministry.{"\n"}{"\n"}
-                Our Ministry Offers:{"\n"}
-                    {"\n"}A United Methodist Centric listening experience
+                <Text style={globalStyles.aboutUsHeader}>What Is WesleyOne.faith all about ?</Text>
+                <Text style={{ fontWeight: '400', textAlign: 'center', fontSize: 16, padding: 20 }}> WesleyOne Internet Radio is a live Broadcast Ministry.</Text>
+                <Title style={globalStyles.aboutUsHeader}>Our Ministry Offers:</Title>
+                <Text style={{ fontWeight: '400', textAlign: 'center', fontSize: 16, padding: 20 }}>
+                    A United Methodist Centric listening experience
                 {"\n"}A contemporary Christian music format
                 {"\n"}Up to date United Methodist News
                 {"\n"}Inspiring interviews and stories
                 {"\n"}Messages from conference leaders
-                {"\n"}Devotions & messages from pastors</Text>
+                {"\n"}Devotions & messages from pastors
+</Text>
+                <View style={globalStyles.buttonContainer}>
+                    <Anchor
+                        href="tel:(540)236-8275"
+                        title="Call Us"
+                        icon="phone"
+                        size={20}
+                        color="#99ffcc" />
+                    <Anchor
+                        href="mailto:wesleyone@wesleyone.faith?subject=Contact from App"
+                        title="Email Us"
+                        icon="envelope"
+                        size={20}
+                        color="#99ffcc" />
+                </View>
 
-            </View>
-            <View>
-                <Anchor href="tel:(540)236-8275" title="Call Us" />
-                <Anchor href="mailto:wesleyone@wesleyone.faith?subject=Contact from App" title="Email Us" />
-            </View>
+            </ScrollView>
+
 
         </SafeAreaView>
     )

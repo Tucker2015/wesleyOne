@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { globalStyles } from '../styles/globalStyles';
-import { SafeAreaView, Text, TouchableOpacity, Image, View, StatusBar } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity, Image, View, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import TrackPlayer, { usePlaybackState } from 'react-native-track-player';
+import TrackPlayer, { STATE_BUFFERING, usePlaybackState } from 'react-native-track-player';
+import VolumeSlider from '../components/VolumeSlider';
 
 export default function RadioPlayer() {
 
     const [data, setData] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const playbackState = usePlaybackState();
-    const [trackName, setTrackName] = useState('WesleyOne');
-    const [artistName, setArtistName] = useState('70s Disco Nights');
+    const [artistName, setArtistName] = useState('WesleyOne');
+    const [trackName, setTrackName] = useState('Methodist Worship & Music');
     const [albumCover, setAlbumCover] = useState('');
 
     useEffect(() => {
@@ -34,11 +35,11 @@ export default function RadioPlayer() {
                 } else {
                     setAlbumCover('');
                 }
-                setTrackName(title == null ? '70s Disco Nights' : title);
-                setArtistName(artist == null ? 'Digital Retroland' : artist);
+                setTrackName(title == null ? 'Methodist Worship & Music' : title);
+                setArtistName(artist == null ? 'WesleyOne' : artist);
                 TrackPlayer.updateMetadataForTrack('1111', {
-                    title: title == null ? '70s Disco Nights' : title,
-                    artist: artist == null ? 'Digital Retroland' : artist,
+                    title: title == null ? 'Methodist Worship & Music' : title,
+                    artist: artist == null ? 'WesleyOne' : artist,
                     artwork: 'https://ktinternet.net/radio-logos/retroland.png',
                 });
                 return;
@@ -116,10 +117,10 @@ export default function RadioPlayer() {
             await TrackPlayer.setupPlayer().then(async () => {
                 TrackPlayer.add({
                     id: '1111',
-                    url: 'https://panel.retrolandigital.com:8170/app',
-                    artist: 'Digital Retroland',
-                    title: '70s Disco Nights',
-                    artwork: 'https://ktinternet.net/radio-logos/retroland.png',
+                    url: data.url,
+                    artist: 'WesleyOne',
+                    title: 'Methodist Worship & Music',
+                    artwork: data.img,
                 });
             });
             await TrackPlayer.play();
@@ -134,37 +135,51 @@ export default function RadioPlayer() {
     // Play Button
     var playButton = 'play';
     if (
+
         playbackState === TrackPlayer.STATE_PLAYING ||
         playbackState === TrackPlayer.STATE_BUFFERING
     ) {
         playButton = 'pause';
     }
+    function getStateName(state) {
+        switch (state) {
+            case TrackPlayer.STATE_BUFFERING:
+                return <ActivityIndicator />;
+        }
+    }
     return (
-        <SafeAreaView style={globalStyles.container}>
-            <Image source={{ uri: data.img }}
+        <SafeAreaView style={globalStyles.radioContainer}>
+            <Image source={albumCover === '' ? { uri: data.img } : { uri: albumCover }}
                 style={globalStyles.cover} />
-            <TouchableOpacity
-                style={globalStyles.playButtonContainer}
-                onPress={togglePlayback}>
-                <Icon
-                    name={playButton}
-                    size={15}
-                    color="#000"
-                />
-            </TouchableOpacity>
-            <View >
-                <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={3}
-                    style={globalStyles.metaText}>
-                    {artistName}
-                </Text>
-                <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={3}
-                    style={globalStyles.metaText}>
-                    {trackName}
-                </Text>
+            <View
+                style={{ position: 'absolute', bottom: 90 }}
+            ><VolumeSlider /></View>
+            <View style={globalStyles.metaData}>
+                <TouchableOpacity
+                    style={globalStyles.playButtonContainer}
+                    onPress={() => {
+                        togglePlayback();
+                    }}>
+                    <Icon
+                        name={playButton}
+                        size={15}
+                        color="#000"
+                    />
+                </TouchableOpacity>
+                <View style={{ flex: 1 }}>
+                    <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={3}
+                        style={globalStyles.metaText}>
+                        {artistName}
+                    </Text>
+                    <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={3}
+                        style={globalStyles.metaText}>
+                        {trackName}
+                    </Text>
+                </View>
             </View>
         </SafeAreaView>
     )

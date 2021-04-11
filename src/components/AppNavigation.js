@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 });
+
+
 const TabNavigator = createMaterialBottomTabNavigator(
     {
         Home: {
@@ -60,7 +62,6 @@ const TabNavigator = createMaterialBottomTabNavigator(
                     <View>
                         <Icon style={[{ color: tintColor }]} size={25} name={'user-alt'} />
                     </View>),
-
             }
         },
         Image: {
