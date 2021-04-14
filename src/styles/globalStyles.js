@@ -11,7 +11,6 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonContainer: {
-        flex: 1,
         alignItems: 'center',
     },
     cover: {
@@ -37,10 +36,10 @@ export const globalStyles = StyleSheet.create({
         marginLeft: 10,
         paddingRight: 10,
         fontSize: win.width / 25,
-        color: '#000',
+        color: '#fff',
     },
     metaData: {
-        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        backgroundColor: 'rgb(0, 0, 0)',
         width: '98%',
         left: 0,
         borderTopRightRadius: 10,
@@ -54,9 +53,9 @@ export const globalStyles = StyleSheet.create({
         elevation: 5,
     },
     aboutUsLogo: {
-        marginTop: 20,
-        width: '100%',
-        height: 100,
+        marginTop: 15,
+        width: win.width / 1,
+        height: win.width / 5,
         resizeMode: 'contain',
     },
     aboutUsHeader: {

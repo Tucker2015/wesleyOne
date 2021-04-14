@@ -13,7 +13,7 @@ class Anchor extends React.Component {
 
     render() {
         return (
-            <Button style={{ width: 200, margin: 10 }} mode="contained" onPress={this._handlePress} color={this.props.color}>
+            <Button style={{ width: 200, margin: 5 }} mode="contained" onPress={this._handlePress} color={this.props.color}>
                 <Icon name={this.props.icon} size={this.props.size} /> <Text> {this.props.title}</Text>
             </Button>
 
@@ -29,15 +29,15 @@ export default function AboutUs() {
                     style={globalStyles.aboutUsLogo} />
                 <Text style={globalStyles.aboutUsHeader}>"Sharing the United Methodist Connexion Through Internet Radio"</Text>
                 <Text style={globalStyles.aboutUsHeader}>What Is WesleyOne.faith all about ?</Text>
-                <Text style={{ fontWeight: '400', textAlign: 'center', fontSize: 16, padding: 20 }}> WesleyOne Internet Radio is a live Broadcast Ministry.</Text>
+                <Text style={{ fontWeight: '400', textAlign: 'center', fontSize: 14, padding: 10 }}> WesleyOne Internet Radio is a live Broadcast Ministry.</Text>
                 <Title style={globalStyles.aboutUsHeader}>Our Ministry Offers:</Title>
-                <Text style={{ fontWeight: '400', textAlign: 'center', fontSize: 16, padding: 20 }}>
-                    A United Methodist Centric listening experience
-                {"\n"}A contemporary Christian music format
-                {"\n"}Up to date United Methodist News
-                {"\n"}Inspiring interviews and stories
-                {"\n"}Messages from conference leaders
-                {"\n"}Devotions & messages from pastors
+                <Text style={{ fontWeight: '400', textAlign: 'left', fontSize: 14, padding: 10 }}>
+                    • A United Methodist Centric listening experience
+                {"\n"}• A contemporary Christian music format
+                {"\n"}• Up to date United Methodist News
+                {"\n"}• Inspiring interviews and stories
+                {"\n"}• Messages from conference leaders
+                {"\n"}• Devotions & messages from pastors
 </Text>
                 <View style={globalStyles.buttonContainer}>
                     <Anchor

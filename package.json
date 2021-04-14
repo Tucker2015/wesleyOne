@@ -28,6 +28,7 @@
     "react-native-system-setting": "^1.7.6",
     "react-native-track-player": "github:puckey/react-native-track-player#ios-playback-metadata-received",
     "react-native-vector-icons": "^8.1.0",
+    "react-native-webview": "^11.4.0",
     "react-navigation": "^4.4.4",
     "react-navigation-material-bottom-tabs": "^2.3.4"
   },

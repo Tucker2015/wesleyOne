@@ -113,7 +113,6 @@ export default function RadioPlayer() {
         const currentTrack = await TrackPlayer.getCurrentTrack();
 
         if (currentTrack == null) {
-            await TrackPlayer.reset();
             await TrackPlayer.setupPlayer().then(async () => {
                 TrackPlayer.add({
                     id: '1111',
@@ -132,6 +131,7 @@ export default function RadioPlayer() {
             }
         }
     }
+
     // Play Button
     var playButton = 'play';
     if (

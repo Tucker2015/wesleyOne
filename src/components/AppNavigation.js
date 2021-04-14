@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import RadioPlayer from '../screens/RadioPlayer'
-import AboutUs from '../screens/AboutUs'
+import { RadioPlayer, FacebookScreen, AboutUs, WebsitePage, InstagramPage } from '../screens';
 class HomeScreen extends React.Component {
     render() {
         return (
@@ -50,27 +49,37 @@ const TabNavigator = createMaterialBottomTabNavigator(
                 tabBarLabel: 'Radio',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={25} name={'headphones'} />
+                        <Icon style={[{ color: tintColor }]} size={20} name={'headphones'} />
                     </View>),
             }
         },
-        Profile: {
-            screen: ProfileScreen,
+        Facebook: {
+            screen: FacebookScreen,
             navigationOptions: {
-                tabBarLabel: 'Profile',
+                tabBarLabel: 'Facebook',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={25} name={'user-alt'} />
+                        <Icon style={[{ color: tintColor }]} size={20} name={'facebook-square'} />
                     </View>),
             }
         },
-        Image: {
-            screen: ImageScreen,
+        Instagram: {
+            screen: InstagramPage,
             navigationOptions: {
-                tabBarLabel: 'History',
+                tabBarLabel: 'Instagram',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={25} name={'image'} />
+                        <Icon style={[{ color: tintColor }]} size={20} name={'instagram-square'} />
+                    </View>),
+            }
+        },
+        Website: {
+            screen: WebsitePage,
+            navigationOptions: {
+                tabBarLabel: 'Website',
+                tabBarIcon: ({ tintColor }) => (
+                    <View>
+                        <Icon style={[{ color: tintColor }]} size={20} name={'globe-americas'} />
                     </View>),
             }
         },
@@ -80,7 +89,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
                 tabBarLabel: 'About',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={25} name={'info'} />
+                        <Icon style={[{ color: tintColor }]} size={20} name={'info'} />
                     </View>),
             }
         },
