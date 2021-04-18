@@ -6034,6 +6034,11 @@ react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-airplay-button@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-airplay-button/-/react-native-airplay-button-1.0.4.tgz#c742a40bb15372a9d051ca0cae7681719f4d1d63"
+  integrity sha512-iMRgiYdHga/XhAEaedyYleR2oM7oE0f3LuKWLFM34ggHYMWYDKR/f5ttJ1qDMiuks592xJOUfzfzYzwRK8ZTyQ==
+
 react-native-bootsplash@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-native-bootsplash/-/react-native-bootsplash-3.2.0.tgz#671861fdd75444f91196d3e64d3539ef50c3a30f"
@@ -6131,6 +6136,11 @@ react-native-system-setting@^1.7.6:
   version "1.7.6"
   resolved "https://registry.yarnpkg.com/react-native-system-setting/-/react-native-system-setting-1.7.6.tgz#43633604ac1bd5fd906acdbffa627a1998d2345a"
   integrity sha512-nBnIK5Xnyu8XRRA3BMzRI54oYlSBKc0oOTQdZOCEeOvn4ltS1nk2shj/vtMQe6khXvuhai3vIc+g7DcsOcr5+w==
+
+react-native-text-ticker@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-text-ticker/-/react-native-text-ticker-1.12.0.tgz#dcffe8d62b40e7850d783a8d5fee27cd3a0b8cf9"
+  integrity sha512-L0rvbNsOuGQfxxwbicHgqnk6IhME5igoipTy7zwy4WDYzeErQNssDCqr4RwW3xUcS7ejyYb5Y9A/UGwHf23Edg==
 
 "react-native-track-player@github:puckey/react-native-track-player#ios-playback-metadata-received":
   version "1.2.3"

@@ -536,7 +536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z7YHQ2AE4P;
+				DEVELOPMENT_TEAM = P3AU9HGPCC;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = WesleyOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -549,11 +549,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kevtucker.wesleyone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddmcnamara.wesleyone;
 				PRODUCT_NAME = WesleyOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "WesleyOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -565,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z7YHQ2AE4P;
+				DEVELOPMENT_TEAM = P3AU9HGPCC;
 				INFOPLIST_FILE = WesleyOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -577,10 +578,11 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kevtucker.wesleyone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddmcnamara.wesleyone;
 				PRODUCT_NAME = WesleyOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "WesleyOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

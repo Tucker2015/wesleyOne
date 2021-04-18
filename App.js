@@ -17,7 +17,7 @@ let App = () => {
   let translateY = useRef(new Animated.Value(0));
 
   let init = async () => {
-    await fakeApiCallWithoutBadNetwork(1500);
+    await fakeApiCallWithoutBadNetwork(2000);
 
     await BootSplash.hide();
 

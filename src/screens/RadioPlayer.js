@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { globalStyles } from '../styles/globalStyles';
-import { SafeAreaView, Text, TouchableOpacity, Image, View, ActivityIndicator } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity, Image, View, ActivityIndicator, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import TrackPlayer, { STATE_BUFFERING, usePlaybackState } from 'react-native-track-player';
 import VolumeSlider from '../components/VolumeSlider';
+import TextTicker from 'react-native-text-ticker'
+import AirPlayButton from 'react-native-airplay-button';
 
 export default function RadioPlayer() {
 
@@ -23,11 +25,13 @@ export default function RadioPlayer() {
         console.log(data)
         setup();
         getCurrentTrackData();
+
     }, [getCurrentTrackData]);
 
     const getCurrentTrackData = useCallback(() => {
         TrackPlayer.addEventListener('playback-metadata-received', async (e) => {
             let [artist, title] = [e.artist, e.title];
+            console.log(e);
             if (e.artist == null || e.title == null) {
                 if (Platform.OS === 'ios') {
                     [artist, title] = e.title.split(' - ');
@@ -141,20 +145,19 @@ export default function RadioPlayer() {
     ) {
         playButton = 'pause';
     }
-    function getStateName(state) {
-        switch (state) {
-            case TrackPlayer.STATE_BUFFERING:
-                return <ActivityIndicator />;
-        }
-    }
+
     return (
         <SafeAreaView style={globalStyles.radioContainer}>
+            <StatusBar barStyle="dark-content" />
+
             <Image source={albumCover === '' ? { uri: data.img } : { uri: albumCover }}
                 style={globalStyles.cover} />
+
             <View
-                style={{ position: 'absolute', bottom: 90 }}
-            ><VolumeSlider /></View>
-            <View style={globalStyles.metaData}>
+                style={{ position: 'absolute', bottom: 70 }}>
+                <VolumeSlider />
+            </View>
+            <View style={globalStyles.playContainer}>
                 <TouchableOpacity
                     style={globalStyles.playButtonContainer}
                     onPress={() => {
@@ -167,21 +170,38 @@ export default function RadioPlayer() {
                     />
                 </TouchableOpacity>
                 <View style={{ flex: 1 }}>
-                    <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={3}
-                        style={globalStyles.metaText}>
+                    <TextTicker
+                        style={{ fontSize: 16, color: '#fff' }}
+                        duration={8000}
+                        loop
+                        bounce
+                        repeatSpacer={50}
+                        marqueeDelay={2000}>
                         {artistName}
-                    </Text>
-                    <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={3}
-                        style={globalStyles.metaText}>
+                    </TextTicker>
+                    <TextTicker
+                        style={{ fontSize: 16, color: '#fff' }}
+                        duration={8000}
+                        loop
+                        bounce
+                        repeatSpacer={50}
+                        marqueeDelay={2000}>
                         {trackName}
-                    </Text>
+                    </TextTicker>
+                </View>
+                <View>
+                    <TouchableOpacity>
+                        {Platform.OS === 'ios' && (
+                            <AirPlayButton
+                                activeTintColor="blue"
+                                tintColor="white"
+                                style={{ width: 40, height: 40 }}
+                            />
+                        )}
+                    </TouchableOpacity>
                 </View>
             </View>
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 

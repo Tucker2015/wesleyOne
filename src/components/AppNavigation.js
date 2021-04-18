@@ -49,27 +49,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
                 tabBarLabel: 'Radio',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={20} name={'headphones'} />
-                    </View>),
-            }
-        },
-        Facebook: {
-            screen: FacebookScreen,
-            navigationOptions: {
-                tabBarLabel: 'Facebook',
-                tabBarIcon: ({ tintColor }) => (
-                    <View>
-                        <Icon style={[{ color: tintColor }]} size={20} name={'facebook-square'} />
-                    </View>),
-            }
-        },
-        Instagram: {
-            screen: InstagramPage,
-            navigationOptions: {
-                tabBarLabel: 'Instagram',
-                tabBarIcon: ({ tintColor }) => (
-                    <View>
-                        <Icon style={[{ color: tintColor }]} size={20} name={'instagram-square'} />
+                        <Icon style={[{ color: tintColor }]} size={25} name={'headphones'} />
                     </View>),
             }
         },
@@ -79,17 +59,38 @@ const TabNavigator = createMaterialBottomTabNavigator(
                 tabBarLabel: 'Website',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={20} name={'globe-americas'} />
+                        <Icon style={[{ color: tintColor }]} size={25} name={'globe-americas'} />
                     </View>),
             }
         },
+        Facebook: {
+            screen: FacebookScreen,
+            navigationOptions: {
+                tabBarLabel: 'Facebook',
+                tabBarIcon: ({ tintColor }) => (
+                    <View>
+                        <Icon style={[{ color: tintColor }]} size={25} name={'facebook-square'} />
+                    </View>),
+            }
+        },
+        // Instagram: {
+        //     screen: InstagramPage,
+        //     navigationOptions: {
+        //         tabBarLabel: 'Instagram',
+        //         tabBarIcon: ({ tintColor }) => (
+        //             <View>
+        //                 <Icon style={[{ color: tintColor }]} size={20} name={'instagram-square'} />
+        //             </View>),
+        //     }
+        // },
+
         About: {
             screen: AboutUs,
             navigationOptions: {
                 tabBarLabel: 'About',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={20} name={'info'} />
+                        <Icon style={[{ color: tintColor }]} size={25} name={'info'} />
                     </View>),
             }
         },
@@ -98,7 +99,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
         initialRouteName: "Home",
         activeColor: '#0099ef',
         inactiveColor: '#343a33',
-        barStyle: { backgroundColor: '#ffffff' },
+        barStyle: { backgroundColor: '#ffffff', paddingBottom: 5 },
     },
 );
 
