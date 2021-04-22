@@ -13,11 +13,7 @@ export const globalStyles = StyleSheet.create({
     buttonContainer: {
         alignItems: 'center',
     },
-    coverContainer: {
-        flex: 1,
 
-        padding: 80
-    },
     cover: {
         width: '100%',
         height: win.width / 1.6,
@@ -29,13 +25,13 @@ export const globalStyles = StyleSheet.create({
     },
     playContainer: {
         backgroundColor: 'rgba(0, 0, 0, 1)',
-        width: '95%',
-        borderTopRightRadius: 10,
-        borderBottomRightRadius: 10,
+        borderRadius: 10,
         padding: 5,
         position: 'absolute',
-        bottom: 10,
-        left: 0,
+        bottom: 20,
+        alignSelf: 'center',
+        alignContent: 'center',
+        width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
         shadowColor: 'rgba(0, 0, 0, 0.5)',

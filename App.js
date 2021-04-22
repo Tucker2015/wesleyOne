@@ -5,7 +5,7 @@ import BootSplash from "react-native-bootsplash";
 import Navigator from './src/components/AppNavigation'
 import { NavigationContainer } from '@react-navigation/native';
 
-let bootSplashLogo = require("./assets/bootsplash_logo.png");
+let bootSplashLogo = require("./assets/bootsplash_main.png");
 
 let fakeApiCallWithoutBadNetwork = (ms) =>
   new Promise((resolve) => setTimeout(resolve, ms));

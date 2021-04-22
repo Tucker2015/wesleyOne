@@ -31,7 +31,7 @@ export default function AboutUs() {
                 <Text style={globalStyles.aboutUsHeader}>What Is WesleyOne.faith all about ?</Text>
                 <Text style={{ fontWeight: '400', textAlign: 'center', fontSize: 14, padding: 10 }}> WesleyOne Internet Radio is a live Broadcast Ministry.</Text>
                 <Title style={globalStyles.aboutUsHeader}>Our Ministry Offers:</Title>
-                <Text style={{ fontWeight: '400', textAlign: 'left', fontSize: 14, padding: 10 }}>
+                <Text style={{ fontWeight: '400', textAlign: 'center', fontSize: 14, padding: 10 }}>
                     • A United Methodist Centric listening experience
                 {"\n"}• A contemporary Christian music format
                 {"\n"}• Up to date United Methodist News

@@ -22,19 +22,24 @@ export default function RadioPlayer() {
             .then((json) => setData(json))
             .catch((error) => console.error(error))
             .finally(() => setLoading(false));
-        console.log(data)
+
         setup();
         getCurrentTrackData();
-
     }, [getCurrentTrackData]);
 
     const getCurrentTrackData = useCallback(() => {
+
+
         TrackPlayer.addEventListener('playback-metadata-received', async (e) => {
             let [artist, title] = [e.artist, e.title];
-            console.log(e);
+            console.log(e.title)
             if (e.artist == null || e.title == null) {
+                if (Platform.OS === 'android') {
+                    [artist, title] = e.title.split('~');
+                    updateTrackPlayer(artist, title);
+                }
                 if (Platform.OS === 'ios') {
-                    [artist, title] = e.title.split(' - ');
+                    [artist, title] = e.title.split('~');
                     updateTrackPlayer(artist, title);
                 } else {
                     setAlbumCover('');
@@ -44,7 +49,7 @@ export default function RadioPlayer() {
                 TrackPlayer.updateMetadataForTrack('1111', {
                     title: title == null ? 'Methodist Worship & Music' : title,
                     artist: artist == null ? 'WesleyOne' : artist,
-                    artwork: 'https://ktinternet.net/radio-logos/retroland.png',
+                    artwork: 'https://ktinternet.net/radio-logos/wesley_one.jpg',
                 });
                 return;
             }
@@ -57,7 +62,7 @@ export default function RadioPlayer() {
         fetch(`https://itunes.apple.com/search?term=?${artist}+${track}&limit=2`)
             .then((res) => res.json())
             .then((body) => {
-                console.log(body);
+                // console.log(body);
                 //checking if we parsed invalid artist and track, if so I set album cover to "" so you will se default one and I return so other part of the code won't run
                 if (body.error != null) {
                     setAlbumCover('');
@@ -65,7 +70,7 @@ export default function RadioPlayer() {
                     TrackPlayer.updateMetadataForTrack('1111', {
                         title: track,
                         artist: artist,
-                        artwork: 'https://ktinternet.net/radio-logos/retroland.png',
+                        artwork: 'https://ktinternet.net/radio-logos/wesley_one.jpg',
                     });
                     return;
                 }
@@ -81,7 +86,7 @@ export default function RadioPlayer() {
                     artist: artist,
                     artwork:
                         img === ''
-                            ? 'https://ktinternet.net/radio-logos/retroland.png'
+                            ? 'https://ktinternet.net/radio-logos/wesley_one.jpg'
                             : img,
                 });
             })
@@ -90,9 +95,9 @@ export default function RadioPlayer() {
                 TrackPlayer.updateMetadataForTrack('1111', {
                     title: track,
                     artist: artist,
-                    artwork: 'https://ktinternet.net/radio-logos/retroland.png',
+                    artwork: 'https://ktinternet.net/radio-logos/wesley_one.jpg',
                 });
-                console.log('error log', error);
+                // console.log('error log', error);
             });
     };
     async function setup() {
@@ -121,7 +126,7 @@ export default function RadioPlayer() {
                 TrackPlayer.add({
                     id: '1111',
                     url: data.url,
-                    artist: 'WesleyOne',
+                    artist: '',
                     title: 'Methodist Worship & Music',
                     artwork: data.img,
                 });
@@ -154,7 +159,8 @@ export default function RadioPlayer() {
                 style={globalStyles.cover} />
 
             <View
-                style={{ position: 'absolute', bottom: 70 }}>
+                style={{ position: 'absolute', bottom: 80 }}>
+
                 <VolumeSlider />
             </View>
             <View style={globalStyles.playContainer}>

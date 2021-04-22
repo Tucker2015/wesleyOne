@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   volumeSlider: {
     alignSelf: 'center',
     alignContent: 'center',
-    width: '75%',
+    width: '65%',
   },
 
 });
